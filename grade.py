@@ -1,6 +1,37 @@
+import sys
 from subprocess import Popen, PIPE
 import platform
 
+print("Number of arguments:", len(sys.argv), "arguments.")
+print("Argument List:", str(sys.argv))
+
+if len(sys.argv) < 2:
+    print("Usage: python grader.py testInput.in testOutput.out || python grader.py testOutput.out")
+    sys.exit()
+if len(sys.argv) == 2:
+    print("No input file provided")
+    if sys.argv[1].endswith('.out'):
+        testOutputFile = str(sys.argv[1])
+        print(str(sys.argv[1]), "is the test output file")
+    else:
+        print("Please provide a .out file for comparison")
+        sys.exit()
+elif len(sys.argv) == 3:
+    if sys.argv[1].endswith('.in'):
+        testInputFile = str(sys.argv[1])
+        print(str(sys.argv[1]), "is the test input file")
+        if sys.argv[2].endswith('.out'):
+            testOutputFile = str(sys.argv[1])
+            print(str(sys.argv[2]), "is the test output file")
+        else:
+            print("Usage: python grader.py testInput.in testOutput.out || python grader.py testOutput.out")
+    else:
+        print("Usage: python grader.py testInput.in testOutput.out || python grader.py testOutput.out")
+        sys.exit()
+else:
+    print("Usage: python grader.py testInput.in testOutput.out || python grader.py testOutput.out")
+    sys.exit()
+    
 #initialize students
 students = []
 
@@ -48,7 +79,7 @@ for s in students:
 
     p2 = Popen('/bin/bash', stdin=PIPE, stdout=PIPE, stderr=PIPE, shell=True)
     out, err = p2.communicate(commands.encode('utf-8'))
-    print(out)
+    #print(out)
     outputs = out.decode('utf-8').strip().split('\n')
     errors = err.decode('utf-8').split('\n')
     due = 1580558400
@@ -57,11 +88,11 @@ for s in students:
     try:
         #print("Time-->", outputs[0])
         if int(outputs[0]) <= due+hour*0:
-            print("here")
+            #print("here")
             total = total
             errors.append('on time')
         elif int(outputs[0]) > due+hour*0:
-            print("musthere")
+            #print("musthere")
             total *= 0.9
             errors.append('late by 0+ hours')
         elif int(outputs[0]) > (due+hour*1):
@@ -79,8 +110,8 @@ for s in students:
     except:
         pass
     total = int(total)
-    print(outputs)
-    print(errors)
+    #print(outputs)
+    #print(errors)
 
     try:
         if outputs[-12:] == lineList:
