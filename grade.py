@@ -28,17 +28,18 @@ for s in students:
         stat -f "%m" -t "%Y" hw1p1.tar
         tar xvf hw1p1.tar
         make all
-        ./useVelocity
         make clean
+        make all
+        ./useVelocity
         '''
     else:
         commands = f'''
         cd {s}
         stat -c "%Y" hw1p1.tar
         tar xvf hw1p1.tar
+        make clean
         make all
         ./useVelocity
-        make clean
         '''
 
     p2 = Popen('/bin/bash', stdin=PIPE, stdout=PIPE, stderr=PIPE)
@@ -46,7 +47,7 @@ for s in students:
     print(out)
     outputs = out.decode('utf-8').strip().split('\n')
     errors = err.decode('utf-8').split('\n')
-    due = 1580500800
+    due = 1580558400
     hour = 3600
 
     try:
@@ -73,5 +74,22 @@ for s in students:
             errors.append('late by 4+ hours')
     except:
         pass
-    print(outputs)
-    print(errors)
+    #print(outputs)
+    #print(errors)
+
+    try:
+        if outputs[-12:] == ['velocity: 0', 'velocity: 15', 'velocity: 65', 'velocity: -5', 'velocity: 60', 'velocity: 25', 'velocity: 25', 'velocity: 19', 'velocity: 14', 'velocity: 4', 'velocity: 7', '17']:
+            results.append([s.split('@')[0], total, errors])
+            count += 1
+        else:
+            total *= -1
+            results.append([s.split('@')[0], total, outputs, errors])
+    except:
+        total *= -1
+        results.append([s.split('@')[0], total, outputs, errors])
+
+with open('results.txt', 'w+') as f:
+    for result in results:
+        f.write(str(result)+'\n')
+    f.write(f'correct submissions: {str(count)}')
+    f.write(f'total submissions: {len(students)}')
