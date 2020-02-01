@@ -14,11 +14,15 @@ for item in out1:
     if '@' in item:
         students.append(item)
 
-print(students)
+#print(students)
+
+#convert output file to lineList for comparison
+lineList = [line.rstrip('\n') for line in open('useVelocity.out', 'r')]
+#print(lineList)
 
 results = []
 count = 0
-print('starting')
+#print('starting')
 for s in students:
     print(s)
     total = 20
@@ -42,7 +46,7 @@ for s in students:
         ./useVelocity
         '''
 
-    p2 = Popen('/bin/bash', stdin=PIPE, stdout=PIPE, stderr=PIPE)
+    p2 = Popen('/bin/bash', stdin=PIPE, stdout=PIPE, stderr=PIPE, shell=True)
     out, err = p2.communicate(commands.encode('utf-8'))
     print(out)
     outputs = out.decode('utf-8').strip().split('\n')
@@ -74,15 +78,16 @@ for s in students:
             errors.append('late by 4+ hours')
     except:
         pass
-    #print(outputs)
-    #print(errors)
+    total = int(total)
+    print(outputs)
+    print(errors)
 
     try:
-        if outputs[-12:] == ['velocity: 0', 'velocity: 15', 'velocity: 65', 'velocity: -5', 'velocity: 60', 'velocity: 25', 'velocity: 25', 'velocity: 19', 'velocity: 14', 'velocity: 4', 'velocity: 7', '17']:
+        if outputs[-12:] == lineList:
             results.append([s.split('@')[0], total, errors])
             count += 1
         else:
-            total *= -1
+            total += -10
             results.append([s.split('@')[0], total, outputs, errors])
     except:
         total *= -1
