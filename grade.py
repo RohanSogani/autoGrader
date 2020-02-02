@@ -1,7 +1,9 @@
 import sys
+import time
 from subprocess import Popen, PIPE
 import platform
 
+start_time = time.time()
 print("Number of arguments:", len(sys.argv), "arguments.")
 print("Argument List:", str(sys.argv))
 
@@ -108,8 +110,8 @@ for s in students:
     except:
         pass
     total = int(total)
-    print(outputs)
-    print(errors)
+    #print(outputs)
+    #print(errors)
 
     commandsExec = f'''
         cd {s}
@@ -159,3 +161,4 @@ with open('results.txt', 'w+') as f:
 with open('StudentIDScores.txt', 'w+') as f:
     for finalResult in finalResults:
         f.write(str(finalResult)+'\n')
+print("--- %s seconds ---" % (time.time() - start_time))
