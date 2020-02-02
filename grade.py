@@ -114,15 +114,28 @@ for s in students:
     #print(outputs)
     #print(errors)
 
+    commandsExec = f'''
+        cd {s}
+        ./useVelocity
+        '''
+
+    p3 = Popen('/bin/bash', stdin=PIPE, stdout=PIPE, stderr=PIPE, shell=True)
+    out, err = p3.communicate(commandsExec.encode('utf-8'))
+    #print(out)
+    outputsExec = out.decode('utf-8').strip().split('\n')
+    print(outputsExec)
+    errorsExec = err.decode('utf-8').split('\n')
+    errors.append(errorsExec)
     try:
-        if outputs[-12:] == testOutputList:
-            results.append([s.split('@')[0], total, errors])
+        if outputsExec == testOutputList:
+            outputs.append("Output is expected")
+            results.append([s.split('@')[0], total, outputs, errors])
             count += 1
         else:
             total += -10
             results.append([s.split('@')[0], total, outputs, errors])
     except:
-        total *= -1
+        total *= 0
         results.append([s.split('@')[0], total, outputs, errors])
 
 with open('results.txt', 'w+') as f:
