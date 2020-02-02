@@ -11,6 +11,7 @@ if len(sys.argv) < 2:
 if len(sys.argv) == 2:
     print("No input file provided")
     if sys.argv[1].endswith('.out'):
+        testInputFile = ''
         testOutputFile = str(sys.argv[1])
         print(str(sys.argv[1]), "is the test output file")
     else:
@@ -48,8 +49,8 @@ for item in out1:
 #print(students)
 
 #convert output file to lineList for comparison
-lineList = [line.rstrip('\n') for line in open('useVelocity.out', 'r')]
-#print(lineList)
+testOutputList = [line.rstrip('\n') for line in open(testOutputFile, 'r')]
+#print(testOutputList)
 
 results = []
 count = 0
@@ -114,7 +115,7 @@ for s in students:
     #print(errors)
 
     try:
-        if outputs[-12:] == lineList:
+        if outputs[-12:] == testOutputList:
             results.append([s.split('@')[0], total, errors])
             count += 1
         else:
