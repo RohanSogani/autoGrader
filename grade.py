@@ -135,7 +135,7 @@ for s in students:
             if len(outputsExec) == len(testOutputList):
                 for i in range(len(testOutputList)):
                     if testOutputList[i] != outputsExec[i]:
-                        #reduce 5 marks
+                        #reduce 1 mark
                         total += -1
             else:
                 total += -10
