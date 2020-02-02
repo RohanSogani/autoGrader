@@ -14,7 +14,7 @@ Each student has a folder containing the .tar file of all the related file to th
 
 <strong>Usage</strong>
 ```console
-   foo@bar:~$ python3 grade.py <testInputFile.in> <testOutputFile.out>
+   foo@bar:~$ python3 grade.py testInputFile.in testOutputFile.out
 ```
 The input file is not mandatory, in that case the script needs to be hardcoded to supply proper input.
 
