@@ -2,7 +2,7 @@
 <strong>Problem Description</strong>\
 Attempts to reduce the task of manually grading over 190+ students C++ coding assignment submissions.\
 Students submit their programs via the handin command.\
-Each student has a folder containing the .tar file of all the related file to the assignment.\
+Each student has a folder containing the .tar file of all the related file to the assignment.
 
 <strong>Task</strong>
 1. Check the file submission date against the due date
@@ -25,4 +25,4 @@ The input file is not mandatory, in that case the script needs to be hardcoded t
 <strong>Analysis</strong>\
 This script was tested on a folder containing over 190 students sub-directories all containing .tar files.\
 Overall time it took was just over <strong>150 seconds</strong>, about <strong>2.5 - 3 minutes</strong>\
-The manual task on the other hand could take over 5 hours or more. :P
+The manual task on the other hand could take over <strong>5 hours or more</strong>. :P
