@@ -53,6 +53,7 @@ testOutputList = [line.rstrip('\n') for line in open(testOutputFile, 'r')]
 #print(testOutputList)
 
 results = []
+finalResults = []
 count = 0
 #print('starting')
 for s in students:
@@ -66,16 +67,15 @@ for s in students:
         make all
         make clean
         make all
-        ./useVelocity
         '''
     else:
         commands = f'''
         cd {s}
         stat -c "%Y" hw1p1.tar
         tar xvf hw1p1.tar
+        make all
         make clean
         make all
-        ./useVelocity
         '''
 
     p2 = Popen('/bin/bash', stdin=PIPE, stdout=PIPE, stderr=PIPE, shell=True)
@@ -87,13 +87,10 @@ for s in students:
     hour = 3600
 
     try:
-        #print("Time-->", outputs[0])
         if int(outputs[0]) <= due+hour*0:
-            #print("here")
             total = total
             errors.append('on time')
         elif int(outputs[0]) > due+hour*0:
-            #print("musthere")
             total *= 0.9
             errors.append('late by 0+ hours')
         elif int(outputs[0]) > (due+hour*1):
@@ -111,8 +108,8 @@ for s in students:
     except:
         pass
     total = int(total)
-    #print(outputs)
-    #print(errors)
+    print(outputs)
+    print(errors)
 
     commandsExec = f'''
         cd {s}
@@ -130,16 +127,35 @@ for s in students:
         if outputsExec == testOutputList:
             outputs.append("Output is expected")
             results.append([s.split('@')[0], total, outputs, errors])
+            kerberosID = s.split('@')[0]
+            csvLine = kerberosID + ", " + str(total)
+            finalResults.append(csvLine)
             count += 1
         else:
-            total += -10
+            if len(outputsExec) == len(testOutputList):
+                for i in range(len(testOutputList)):
+                    if testOutputList[i] != outputsExec[i]:
+                        #reduce 5 marks
+                        total += -1
+            else:
+                total += -10
             results.append([s.split('@')[0], total, outputs, errors])
+            kerberosID = s.split('@')[0]
+            csvLine = kerberosID + ", " + str(total)
+            finalResults.append(csvLine)
     except:
         total *= 0
         results.append([s.split('@')[0], total, outputs, errors])
+        kerberosID = s.split('@')[0]
+        csvLine = kerberosID + ", " + str(total)
+        finalResults.append(csvLine)
 
 with open('results.txt', 'w+') as f:
     for result in results:
         f.write(str(result)+'\n')
     f.write(f'correct submissions: {str(count)}')
     f.write(f'total submissions: {len(students)}')
+
+with open('StudentIDScores.txt', 'w+') as f:
+    for finalResult in finalResults:
+        f.write(str(finalResult)+'\n')
