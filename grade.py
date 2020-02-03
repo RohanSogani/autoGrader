@@ -94,7 +94,7 @@ for s in students:
             errors.append('on time')
         elif int(outputs[0]) > due+hour*0:
             total *= 0.9
-            errors.append('late by 0+ hours')
+            errors.append('late by 0+ hour')
         elif int(outputs[0]) > (due+hour*1):
             total *= 0.8
             errors.append('late by 1+ hours')
