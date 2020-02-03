@@ -6,7 +6,7 @@ Each student has a folder containing the .tar file of all the related file to th
 
 <strong>Helper files</strong>
 1. <strong>mergeFileColumns.py</strong> - Merges the scores of two assignments in one final score file
-2. <strong>findMissingStudents.py</strong> compares final score file with the total number of students. Further it finds the students who have not submitted their homework and assigns 0 score.
+2. <strong>findMissingStudents.py</strong> - compares final score file with the total number of students. Further it finds the students who have not submitted their homework and assigns 0 score.
 
 <strong>Task</strong>
 1. Check the file submission date against the due date
