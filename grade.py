@@ -113,11 +113,16 @@ for s in students:
     #print(outputs)
     #print(errors)
 
-    commandsExec = f'''
-        cd {s}
-        ./useVelocity
-        '''
-
+    if testInputFile == '':
+        commandsExec = f'''
+            cd {s}
+            ./useVelocity
+            '''
+    else:
+        commandsExec = f'''
+            cd {s}
+            ./useVelocity < {testInputFile}
+            '''
     p3 = Popen('/bin/bash', stdin=PIPE, stdout=PIPE, stderr=PIPE, shell=True)
     out, err = p3.communicate(commandsExec.encode('utf-8'))
     #print(out)
