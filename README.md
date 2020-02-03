@@ -4,6 +4,10 @@ Attempts to reduce the task of manually grading over 190+ students C++ coding as
 Students submit their programs via the handin command.\
 Each student has a folder containing the .tar file of all the related file to the assignment.
 
+<strong>Helper files</strong>
+1. mergeFileColumns.py merges the scores of two assignments in one final score file
+2. findMissingStudents.py compares final score file with the total number of students. Further it finds the students who have not submitted their homework and assigns 0 score.
+
 <strong>Task</strong>
 1. Check the file submission date against the due date
 2. Untar the file
