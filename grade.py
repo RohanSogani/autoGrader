@@ -8,7 +8,7 @@ print("Number of arguments:", len(sys.argv), "arguments.")
 print("Argument List:", str(sys.argv))
 
 if len(sys.argv) < 2:
-    print("Usage: python grader.py testInput.in testOutput.out || python grader.py testOutput.out")
+    print("Usage: python grader.py testInput.in testOutput.out || python grader.py testOutput.out && timestamp")
     sys.exit()
 if len(sys.argv) == 2:
     print("No input file provided")
