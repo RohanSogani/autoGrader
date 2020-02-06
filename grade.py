@@ -82,28 +82,36 @@ for s in students:
     #print(out)
     outputs = out.decode('utf-8').strip().split('\n')
     errors = err.decode('utf-8').split('\n')
-    due = 1580558400
+    #Due date was 28th Jan, 23:59
+    due = 1580255940
     hour = 3600
 
     try:
+        print(outputs[0])
         if int(outputs[0]) <= due+hour*0:
             total = total
             errors.append('on time')
+            print("On Time")
         elif int(outputs[0]) > due+hour*0:
             total *= 0.9
             errors.append('late by 0+ hour')
+            print("late by 0+ hour")
         elif int(outputs[0]) > (due+hour*1):
             total *= 0.8
             errors.append('late by 1+ hours')
+            print("late by 1+ hour")
         elif int(outputs[0]) > (due+hour*2):
             total *= 0.7
             errors.append('late by 2+ hours')
+            print("late by 2+ hour")
         elif int(outputs[0]) > (due+hour*3):
             total *= 0.6
             errors.append('late by 3+ hours')
+            print("late by 3+ hour")
         else:
             total *= 0
             errors.append('late by 4+ hours')
+            print("late by 4+ hour")
     except:
         pass
     total = int(total)
@@ -140,9 +148,19 @@ for s in students:
                 for i in range(len(testOutputList)):
                     if testOutputList[i] != outputsExec[i]:
                         #reduce 1 mark
+                        outputs.append("Output is partially expected")
                         total += -1
             else:
-                total += -10
+                spaceRemovedOutputsExec = []
+                for i in outputsExec:
+                    j = i.replace(' ','')
+                    spaceRemovedOutputsExec.append(j)
+                if spaceRemovedOutputsExec == testInputFile:
+                    outputs.append("Output had extra spaces")
+                    total += -2
+                else:
+                    outputs.append("Output is completely different")
+                    total += -10
             results.append([s.split('@')[0], total, outputs, errors])
             kerberosID = s.split('@')[0]
             csvLine = kerberosID + ", " + str(total)
