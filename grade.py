@@ -48,11 +48,8 @@ for item in out1:
     if '@' in item:
         students.append(item)
 
-#print(students)
-
-#convert output file to lineList for comparison
+#put test input file in a list for partial checking
 testOutputList = [line.rstrip('\n') for line in open(testOutputFile, 'r')]
-#print(testOutputList)
 
 results = []
 finalResults = []
