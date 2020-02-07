@@ -7,25 +7,25 @@ start_time = time.time()
 print("Number of arguments:", len(sys.argv), "arguments.")
 print("Argument List:", str(sys.argv))
 
-if len(sys.argv) < 2:
-    print("Usage: python grader.py testInput.in testOutput.out || python grader.py testOutput.out && timestamp")
+if len(sys.argv) < 3:
+    print("Usage: python grader.py Due-TimeStamp testInput.in testOutput.out || python grader.py Due-TimeStamp testOutput.out")
     sys.exit()
-if len(sys.argv) == 2:
+if len(sys.argv) == 3:
     print("No input file provided")
-    if sys.argv[1].endswith('.out'):
+    if sys.argv[2].endswith('.out'):
         testInputFile = ''
-        testOutputFile = str(sys.argv[1])
-        print(str(sys.argv[1]), "is the test output file")
+        testOutputFile = str(sys.argv[2])
+        print(str(sys.argv[2]), "is the test output file")
     else:
         print("Please provide a .out file for comparison")
         sys.exit()
-elif len(sys.argv) == 3:
-    if sys.argv[1].endswith('.in'):
+elif len(sys.argv) == 4:
+    if sys.argv[2].endswith('.in'):
         testInputFile = str(sys.argv[1])
-        print(str(sys.argv[1]), "is the test input file")
-        if sys.argv[2].endswith('.out'):
+        print(str(sys.argv[2]), "is the test input file")
+        if sys.argv[3].endswith('.out'):
             testOutputFile = str(sys.argv[1])
-            print(str(sys.argv[2]), "is the test output file")
+            print(str(sys.argv[3]), "is the test output file")
         else:
             print("Usage: python grader.py testInput.in testOutput.out || python grader.py testOutput.out")
     else:
@@ -83,7 +83,8 @@ for s in students:
     outputs = out.decode('utf-8').strip().split('\n')
     errors = err.decode('utf-8').split('\n')
     #Due date was 28th Jan, 23:59
-    due = 1580255940
+    due = sys.argv[2]
+    print(due)
     hour = 3600
 
     try:
