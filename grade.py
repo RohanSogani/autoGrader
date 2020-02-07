@@ -83,8 +83,8 @@ for s in students:
     outputs = out.decode('utf-8').strip().split('\n')
     errors = err.decode('utf-8').split('\n')
     #Due date was 28th Jan, 23:59
-    due = sys.argv[2]
-    print(due)
+    due = sys.argv[1]
+    print("due is -->",due)
     hour = 3600
 
     try:
