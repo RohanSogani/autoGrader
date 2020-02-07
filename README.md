@@ -4,6 +4,10 @@ Attempts to reduce the task of manually grading over 190+ students C++ coding as
 Students submit their programs via the handin command.\
 Each student has a folder containing the .tar file of all the related file to the assignment.
 
+<strong>Note</strong>
+This script is for such an environment where the directorty contains subdirectories named as StudentKerberosID@something.com.
+Each of these subdirectories must have tar files with containing the all the required files and the Makefile.
+
 <strong>Helper files</strong>
 1. <strong>mergeFileColumns.py</strong> - Merges the scores of two assignments in one final score file
 2. <strong>findMissingStudents.py</strong> - compares final score file with the total number of students. Further it finds the students who have not submitted their homework and assigns 0 score.
