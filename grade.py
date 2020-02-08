@@ -88,24 +88,23 @@ for s in students:
     hour = 3600
 
     try:
-        print(outputs[0])
-        if int(outputs[0]) <= due+hour*0:
+        if int(outputs[0]) <= int(due)+hour*0:
             total = total
             errors.append('on time')
             print("On Time")
-        elif int(outputs[0]) > due+hour*0:
+        elif int(outputs[0]) > int(due)+hour*0 and int(outputs[0]) <= int(due)+hour*1:
             total *= 0.9
             errors.append('late by 0+ hour')
             print("late by 0+ hour")
-        elif int(outputs[0]) > (due+hour*1):
+        elif int(outputs[0]) > int(due)+hour*1 and int(outputs[0]) <= int(due)+hour*2:
             total *= 0.8
             errors.append('late by 1+ hours')
             print("late by 1+ hour")
-        elif int(outputs[0]) > (due+hour*2):
+        elif int(outputs[0]) > int(due)+hour*2 and int(outputs[0]) <= int(due)+hour*3:
             total *= 0.7
             errors.append('late by 2+ hours')
             print("late by 2+ hour")
-        elif int(outputs[0]) > (due+hour*3):
+        elif int(outputs[0]) > int(due)+hour*3 and int(outputs[0]) <= int(due)+hour*4:
             total *= 0.6
             errors.append('late by 3+ hours')
             print("late by 3+ hour")
@@ -114,6 +113,7 @@ for s in students:
             errors.append('late by 4+ hours')
             print("late by 4+ hour")
     except:
+        print("Is it exception")
         pass
     total = int(total)
     #print(outputs)
