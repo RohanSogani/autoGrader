@@ -79,10 +79,8 @@ for s in students:
 
     p2 = Popen('/bin/bash', stdin=PIPE, stdout=PIPE, stderr=PIPE, shell=True)
     out, err = p2.communicate(commands.encode('utf-8'))
-    #print(out)
     outputs = out.decode('utf-8').strip().split('\n')
     errors = err.decode('utf-8').split('\n')
-    #Due date was 28th Jan, 23:59
     due = sys.argv[1]
     print("due is -->",due)
     hour = 3600
@@ -182,4 +180,4 @@ with open('results.txt', 'w+') as f:
 with open('StudentIDScores.txt', 'w+') as f:
     for finalResult in finalResults:
         f.write(str(finalResult)+'\n')
-print("--- %s seconds ---" % (time.time() - start_time))
+print("Time to process", len(students), "students was %s seconds" % (time.time() - start_time))
