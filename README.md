@@ -34,3 +34,4 @@ The input file is not mandatory, in that case the script needs to be hardcoded t
 This script was tested on a folder containing over 190 students sub-directories all containing .tar files.\
 Overall time it took was just over <strong>150 seconds</strong>, about <strong>2.5 - 3 minutes</strong>\
 The manual task on the other hand could take over <strong>20 hours or more</strong>. :P
+Accuracy of this script is about 80%, I still had to manually review about 30 submissions. But, this will improve with time.
