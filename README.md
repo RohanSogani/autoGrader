@@ -22,7 +22,7 @@ Each of these subdirectories must have tar files with containing the all the req
 
 <strong>Usage</strong>
 ```console
-   foo@bar:~$ python3 grade.py <testInputFile.in> <testOutputFile.out>
+   foo@bar:~$ python3 grade.py <DueTimeStamp> <testInputFile.in> <testOutputFile.out>
 ```
 The input file is not mandatory, in that case the script needs to be hardcoded to supply proper input.
 
