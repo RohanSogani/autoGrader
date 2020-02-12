@@ -8,21 +8,11 @@ Each student has a folder containing the .tar file of all the related file to th
 This script is for such an environment where the directorty contains subdirectories named as StudentKerberosID@something.com.
 Each of these subdirectories must have tar files with containing the all the required files and the Makefile.
 
-<strong>Helper files</strong>
-1. <strong>mergeFileColumns.py</strong> - Merges the scores of two assignments in one final score file
-2. <strong>findMissingStudents.py</strong> - compares final score file with the total number of students. Further it finds the students who have not submitted their homework and assigns 0 score.
-
-<strong>Task</strong>
-1. Check the file submission date against the due date
-2. Untar the file
-3. Make the files
-4. Execute with the given input and save the result
-5. Check the result with given output
-
 <strong>Dependencies</strong>
-Python3 is required.
+Python3 is required for all the programs.
 
 <strong>Usage</strong>
+1. <strong>grade.py</strong> - Contains the core logic to grade students
 ```console
    foo@bar:~$ python3 grade.py <DueTimeStamp> <testInputFile.in> <testOutputFile.out>
 ```
@@ -30,6 +20,17 @@ Unix Timestamp is in UTC Format.\
 The due date can be converted [here](https://www.unixtimestamp.com/index.php).\
 If the due date is January 28, 2020, 11:59pm, enter January 29, 2020, 07:59am.\
 The input file is not mandatory, in that case the script needs to be hardcoded to supply proper input.
+
+<strong>Helper files</strong>
+1. <strong>mergeFileColumns.py</strong> - Merges the scores of two assignments in one final score file
+2. <strong>findMissingStudents.py</strong> - Compares final score file with the total number of students. Further it finds the students who have not submitted their homework and assigns 0 score.
+
+<strong>Task</strong>
+1. Check the file submission date against the due date
+2. Untar the file
+3. Make the files
+4. Execute with the given input and save the result
+5. Check the result with given output
 
 <strong>Output</strong>
 1. A clean comma separated txt file with kerberosID, score
