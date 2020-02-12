@@ -5,7 +5,7 @@ Students submit their programs via the handin command.\
 Each student has a folder containing the .tar file of all the related file to the assignment.
 
 <strong>Note</strong>\
-This script is for such an environment where the directorty contains subdirectories named as StudentKerberosID@something.com.
+This script is for such an environment where the directory contains subdirectories named as StudentKerberosID@something.com.\
 Each of these subdirectories must have tar files with containing the all the required files and the Makefile.
 
 <strong>Dependencies</strong>\
