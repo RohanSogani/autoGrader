@@ -4,11 +4,11 @@ Attempts to reduce the task of manually grading over 190+ students C++ coding as
 Students submit their programs via the handin command.\
 Each student has a folder containing the .tar file of all the related file to the assignment.
 
-<strong>Note</strong>
+<strong>Note</strong>\
 This script is for such an environment where the directorty contains subdirectories named as StudentKerberosID@something.com.
 Each of these subdirectories must have tar files with containing the all the required files and the Makefile.
 
-<strong>Dependencies</strong>
+<strong>Dependencies</strong>\
 Python3 is required for all the programs.
 
 <strong>Usage</strong>
