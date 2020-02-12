@@ -6,7 +6,7 @@ Each student has a folder containing the .tar file of all the related file to th
 
 <strong>Note</strong>\
 This script is for such an environment where the directory contains subdirectories named as StudentKerberosID@something.com.\
-Each of these subdirectories must have tar files with containing the all the required files and the Makefile.
+Each of these subdirectories must have tar files containing all the required files and the Makefile.
 
 <strong>Dependencies</strong>\
 Python3 is required for all the programs.
