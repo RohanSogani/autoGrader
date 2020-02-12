@@ -19,11 +19,14 @@ Each of these subdirectories must have tar files with containing the all the req
 4. Execute with the given input and save the result
 5. Check the result with given output
 
+<strong>Dependencies</strong>
+Python3 is required.
 
 <strong>Usage</strong>
 ```console
    foo@bar:~$ python3 grade.py <DueTimeStamp> <testInputFile.in> <testOutputFile.out>
 ```
+Timestamp
 The input file is not mandatory, in that case the script needs to be hardcoded to supply proper input.
 
 <strong>Output</strong>
