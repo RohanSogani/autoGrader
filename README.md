@@ -23,7 +23,8 @@ The input file is not mandatory, in that case the script needs to be hardcoded t
 
 <strong>Helper files</strong>
 1. <strong>mergeFileColumns.py</strong> - Merges the scores of two assignments in one final score file
-2. <strong>findMissingStudents.py</strong> - Compares final score file with the total number of students. It also finds the students who have not submitted their homework and assigns 0 score.
+2. <strong>findMissingStudents.py</strong> - Compares final score file with the total number of students.\
+   It also finds the students who have not submitted their homework and assigns 0 score.
 
 <strong>Task</strong>
 1. Check the file submission date against the due date
@@ -38,6 +39,7 @@ The input file is not mandatory, in that case the script needs to be hardcoded t
 
 <strong>Analysis</strong>\
 This script was tested on a folder containing over 190 students sub-directories all containing .tar files.\
-Overall time it took was just over <strong>150 seconds</strong>, about <strong>2.5 - 3 minutes</strong>\
+Overall time it took was just over *150 seconds*, about <strong>2.5 - 3 minutes</strong>\
 The manual task on the other hand could take over <strong>20 hours or more</strong>. :P
-Accuracy of this script is about 80%, I still had to manually review about 30 submissions. But, this will improve with time.
+Accuracy of this script is about 80%, I still had to manually review about 30 submissions.
+But, this will improve with time.
