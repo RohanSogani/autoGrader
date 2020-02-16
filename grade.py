@@ -12,9 +12,9 @@ with open('config.json') as f:
 students = []
 
 # ls will give all the submitted directories, kerberos@ad3.ucdavis.edu
-p1 = Popen(['ls'], stdout=PIPE, stderr=PIPE, encoding='utf8')
+listStudents = Popen(['ls'], stdout=PIPE, stderr=PIPE, encoding='utf8')
 
-out1, err1 = p1.communicate()
+out1, err1 = listStudents.communicate()
 
 out1 = out1.split()
 for item in out1:
@@ -52,8 +52,8 @@ for s in students:
         make all
         '''
 
-    p2 = Popen('/bin/bash', stdin=PIPE, stdout=PIPE, stderr=PIPE, shell=True)
-    out, err = p2.communicate(commands.encode('utf-8'))
+    timeCheck = Popen('/bin/bash', stdin=PIPE, stdout=PIPE, stderr=PIPE, shell=True)
+    out, err = timeCheck.communicate(commands.encode('utf-8'))
     outputs = out.decode('utf-8').strip().split('\n')
     errors = err.decode('utf-8').split('\n')
     due = config.get('timeStamp')
@@ -107,6 +107,7 @@ for s in students:
         maxInFile = config.get('multipleInFile')
         commandString = ""
         if maxInFile != 0:
+            # form multiple input commanc strings
             for inFileCount  in range(1, maxInFile + 1):
                 commandString = commandString + "./" + config.get('execFileName') + " < ../test" + str(inFileCount) + ".in\n"
             commandsExec = f'''
@@ -117,8 +118,8 @@ for s in students:
             print("No of Max File must be greater than 0")
             exit
 
-    p3 = Popen('/bin/bash', stdin=PIPE, stdout=PIPE, stderr=PIPE, shell=True)
-    out, err = p3.communicate(commandsExec.encode('utf-8'))
+    runExecutable = Popen('/bin/bash', stdin=PIPE, stdout=PIPE, stderr=PIPE, shell=True)
+    out, err = runExecutable.communicate(commandsExec.encode('utf-8'))
     outputsExec = out.decode('utf-8').strip().split('\n')
     print(outputsExec)
     errorsExec = err.decode('utf-8').split('\n')
