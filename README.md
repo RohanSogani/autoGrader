@@ -11,14 +11,15 @@ Each of these subdirectories must have tar files containing all the required fil
 Python3 is required for all the programs.
 
 ## Usage
-1. <strong>grade.py</strong> - Contains the core logic to grade students
+1. Setup the config.json file as per requirement.
+2. Unix Timestamp is in UTC Format.\
+   The due date can be converted [here](https://www.unixtimestamp.com/index.php).\
+   If the due date is January 28, 2020, 11:59pm, enter January 29, 2020, 07:59am.\
+   The input file is not mandatory, in that case the script needs to be hardcoded to supply proper input.
+3. <strong>grade.py</strong> - Contains the core logic to grade students
 ```console
-   foo@bar:~$ python3 grade.py <DueTimeStamp> <testInputFile.in> <testOutputFile.out>
+   foo@bar:~$ python3 grade.py
 ```
-Unix Timestamp is in UTC Format.\
-The due date can be converted [here](https://www.unixtimestamp.com/index.php).\
-If the due date is January 28, 2020, 11:59pm, enter January 29, 2020, 07:59am.\
-The input file is not mandatory, in that case the script needs to be hardcoded to supply proper input.
 
 ## Helper files
 1. <strong>mergeFileColumns.py</strong> - Merges the scores of two assignments in one final score file
