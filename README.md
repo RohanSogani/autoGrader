@@ -15,7 +15,6 @@ Python3 is required for all the programs.
 2. Unix Timestamp is in UTC Format.\
    The due date can be converted [here](https://www.unixtimestamp.com/index.php).\
    If the due date is January 28, 2020, 11:59pm, enter January 29, 2020, 07:59am.\
-   The input file is not mandatory, in that case the script needs to be hardcoded to supply proper input.
 3. <strong>grade.py</strong> - Contains the core logic to grade students
 ```console
    foo@bar:~$ python3 grade.py
