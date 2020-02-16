@@ -1,0 +1,11 @@
+{
+    "timeStamp": "",
+    "tarFile": "hw1p1.tar",
+    "execFile": "useVelocity",
+    "testInputFile": "",
+    "testOutputFile": "",
+    "multipleInFile": 0,
+    "maxScore": 20,
+    "deductScore": 1,
+    "resultsFileName": "StudentsIDScore1.txt"
+}
