@@ -1,44 +1,17 @@
-import sys
-import time
+import sys, time, platform, json
 from subprocess import Popen, PIPE
-import platform
 
+# start processing timer
 start_time = time.time()
-print("Number of arguments:", len(sys.argv), "arguments.")
-print("Argument List:", str(sys.argv))
 
-if len(sys.argv) < 3:
-    print("Usage: python grader.py Due-TimeStamp testInput.in testOutput.out || python grader.py Due-TimeStamp testOutput.out")
-    sys.exit()
-if len(sys.argv) == 3:
-    print("No input file provided")
-    if sys.argv[2].endswith('.out'):
-        testInputFile = ''
-        testOutputFile = str(sys.argv[2])
-        print(str(sys.argv[2]), "is the test output file")
-    else:
-        print("Please provide a .out file for comparison")
-        sys.exit()
-elif len(sys.argv) == 4:
-    if sys.argv[2].endswith('.in'):
-        testInputFile = str(sys.argv[1])
-        print(str(sys.argv[2]), "is the test input file")
-        if sys.argv[3].endswith('.out'):
-            testOutputFile = str(sys.argv[1])
-            print(str(sys.argv[3]), "is the test output file")
-        else:
-            print("Usage: python grader.py testInput.in testOutput.out || python grader.py testOutput.out")
-    else:
-        print("Usage: python grader.py testInput.in testOutput.out || python grader.py testOutput.out")
-        sys.exit()
-else:
-    print("Usage: python grader.py testInput.in testOutput.out || python grader.py testOutput.out")
-    sys.exit()
-    
-#initialize students
+# load user setting
+with open('config.json') as f:
+    config = json.load(f)
+ 
+# initialize students
 students = []
 
-#ls will give all the submitted directories, kerberos@ad3.ucdavis.edu
+# ls will give all the submitted directories, kerberos@ad3.ucdavis.edu
 p1 = Popen(['ls'], stdout=PIPE, stderr=PIPE, encoding='utf8')
 
 out1, err1 = p1.communicate()
@@ -48,21 +21,23 @@ for item in out1:
     if '@' in item:
         students.append(item)
 
-#put test input file in a list for partial checking
-testOutputList = [line.rstrip('\n') for line in open(testOutputFile, 'r')]
+testInputFile = config.get('testInputFileName')
+
+# put test input file in a list for partial checking
+testOutputList = [line.rstrip('\n') for line in open(config.get('testOutputFileName'), 'r')]
 
 results = []
 finalResults = []
 count = 0
-#print('starting')
+
 for s in students:
     print(s)
-    total = 20
+    total = config.get('maxScore')
     if platform.system() ==  'Darwin':
         commands = f'''
         cd {s}
-        stat -f "%m" -t "%Y" hw1p1.tar
-        tar xvf hw1p1.tar
+        stat -f "%m" -t "%Y" {config.get('tarFileName')}
+        tar xvf {config.get('tarFileName')}
         make all
         make clean
         make all
@@ -70,8 +45,8 @@ for s in students:
     else:
         commands = f'''
         cd {s}
-        stat -c "%Y" hw1p1.tar
-        tar xvf hw1p1.tar
+        stat -c "%Y" {config.get('tarFileName')}
+        tar xvf {config.get('tarFileName')}
         make all
         make clean
         make all
@@ -81,8 +56,7 @@ for s in students:
     out, err = p2.communicate(commands.encode('utf-8'))
     outputs = out.decode('utf-8').strip().split('\n')
     errors = err.decode('utf-8').split('\n')
-    due = sys.argv[1]
-    print("due is -->",due)
+    due = config.get('timeStamp')
     hour = 3600
 
     try:
@@ -114,26 +88,42 @@ for s in students:
         print("Is it exception")
         pass
     total = int(total)
-    #print(outputs)
-    #print(errors)
 
-    if testInputFile == '':
-        commandsExec = f'''
-            cd {s}
-            ./useVelocity
-            '''
+    # no multi file means 2 cases
+    # 1. either the executable requires no input
+    # 2. or it requires a single input file 
+    if not (config.get('isMultiFileInput')):
+        if testInputFile == '':
+            commandsExec = f'''
+                cd {s}
+                ./{config.get('execFileName')}
+                '''
+        else:
+            commandsExec = f'''
+                cd {s}
+                ./{config.get('execFileName')} < {testInputFile}
+                '''
     else:
-        commandsExec = f'''
-            cd {s}
-            ./useVelocity < {testInputFile}
-            '''
+        maxInFile = config.get('multipleInFile')
+        commandString = ""
+        if maxInFile != 0:
+            for inFileCount  in range(1, maxInFile + 1):
+                commandString = commandString + "./" + config.get('execFileName') + " < ../test" + str(inFileCount) + ".in\n"
+            commandsExec = f'''
+                cd {s}
+                {commandString}
+                '''
+        else:
+            print("No of Max File must be greater than 0")
+            exit
+
     p3 = Popen('/bin/bash', stdin=PIPE, stdout=PIPE, stderr=PIPE, shell=True)
     out, err = p3.communicate(commandsExec.encode('utf-8'))
-    #print(out)
     outputsExec = out.decode('utf-8').strip().split('\n')
     print(outputsExec)
     errorsExec = err.decode('utf-8').split('\n')
     errors.append(errorsExec)
+
     try:
         if outputsExec == testOutputList:
             outputs.append("Output is expected")
@@ -146,17 +136,17 @@ for s in students:
             if len(outputsExec) == len(testOutputList):
                 for i in range(len(testOutputList)):
                     if testOutputList[i] != outputsExec[i]:
-                        #reduce 1 mark
+                        # deduct marks
                         outputs.append("Output is partially expected")
-                        total += -1
+                        total -= config.get('deductScore')
             else:
                 spaceRemovedOutputsExec = []
                 for i in outputsExec:
-                    j = i.replace(' ','')
+                    j = i.replace(' ', '')
                     spaceRemovedOutputsExec.append(j)
                 if spaceRemovedOutputsExec == testInputFile:
                     outputs.append("Output had extra spaces")
-                    total += -2
+                    total -= 2*config.get('deductScore')
                 else:
                     outputs.append("Output is completely different")
                     total += -10
@@ -171,13 +161,14 @@ for s in students:
         csvLine = kerberosID + ", " + str(total)
         finalResults.append(csvLine)
 
-with open('results.txt', 'w+') as f:
+with open(config.get('verboseResultFileName'), 'w+') as f:
     for result in results:
         f.write(str(result)+'\n')
     f.write(f'correct submissions: {str(count)}')
     f.write(f'total submissions: {len(students)}')
 
-with open('StudentIDScores.txt', 'w+') as f:
+with open(config.get('resultsFileName'), 'w+') as f:
     for finalResult in finalResults:
         f.write(str(finalResult)+'\n')
+
 print("Time to process", len(students), "students was %s seconds" % (time.time() - start_time))
