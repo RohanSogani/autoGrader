@@ -11,13 +11,14 @@ with open('config.json') as f:
 # initialize students
 students = []
 
-# ls will give all the submitted directories, kerberos@ad3.ucdavis.edu
+# ls will give all the submitted directories
 listStudents = Popen(['ls'], stdout=PIPE, stderr=PIPE, encoding='utf8')
 
-out1, err1 = listStudents.communicate()
+outlistStudents, errlistStudents = listStudents.communicate()
 
-out1 = out1.split()
-for item in out1:
+outlistStudents = outlistStudents.split()
+for item in outlistStudents:
+    # only consider kerberos@ad3.ucdavis.edu
     if '@' in item:
         students.append(item)
 
