@@ -108,9 +108,9 @@ for s in students:
         maxInFile = config.get('multipleInFile')
         commandString = ""
         if maxInFile != 0:
-            # form multiple input commanc strings
+            # form multiple input command strings
             for inFileCount  in range(1, maxInFile + 1):
-                commandString = commandString + "./" + config.get('execFileName') + " < ../test" + str(inFileCount) + ".in\n"
+                commandString = commandString + "./" + config.get('execFileName') + " < ../" + config.get('testMultiInputFileName') + str(inFileCount) + ".in\n"
             commandsExec = f'''
                 cd {s}
                 {commandString}

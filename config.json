@@ -5,6 +5,7 @@
     "isMultiFileInput": true,
     "testInputFileName": "",
     "testOutputFileName": "finalTest.out",
+    "testMultiInputFileName": "test",
     "multipleInFile": 9,
     "maxScore": 80,
     "deductScore": 5,
