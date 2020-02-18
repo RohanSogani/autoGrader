@@ -34,23 +34,23 @@ count = 0
 for s in students:
     print(s)
     total = config.get('maxScore')
-    if platform.system() ==  'Darwin':
+    if platform.system() == 'Darwin':
         commands = f'''
         cd {s}
         stat -f "%m" -t "%Y" {config.get('tarFileName')}
         tar xvf {config.get('tarFileName')}
-        make all
+        make
         make clean
-        make all
+        make
         '''
     else:
         commands = f'''
         cd {s}
         stat -c "%Y" {config.get('tarFileName')}
         tar xvf {config.get('tarFileName')}
-        make all
+        make
         make clean
-        make all
+        make
         '''
 
     timeCheck = Popen('/bin/bash', stdin=PIPE, stdout=PIPE, stderr=PIPE, shell=True)
