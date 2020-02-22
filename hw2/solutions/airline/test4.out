@@ -1,0 +1,37 @@
+Airplane 1 maximum load 10
+Airplane 2 maximum load 10
+Airplane 3 maximum load 10
+Airplane 4 maximum load 10
+Airplane 5 maximum load 32
+Airplane 6 maximum load 32
+Airplane 7 maximum load 40
+Trying to assign shipment of 122 containers
+ could not fit 122 containers
+Trying to assign shipment of 2 containers
+2 containers added to airplane 1
+Trying to assign shipment of 2 containers
+2 containers added to airplane 1
+Trying to assign shipment of 2 containers
+2 containers added to airplane 1
+Trying to assign shipment of 2 containers
+2 containers added to airplane 1
+Trying to assign shipment of 47 containers
+ could not fit 47 containers
+Trying to assign shipment of 168 containers
+ could not fit 168 containers
+Trying to assign shipment of 72 containers
+ could not fit 72 containers
+Trying to assign shipment of 33 containers
+33 containers added to airplane 7
+Trying to assign shipment of 1 containers
+1 containers added to airplane 1
+Trying to assign shipment of 1 containers
+1 containers added to airplane 1
+Trying to assign shipment of 190 containers
+ could not fit 190 containers
+Trying to assign shipment of 22 containers
+22 containers added to airplane 5
+Summary:
+airplane 1 10/10
+airplane 5 22/32
+airplane 7 33/40

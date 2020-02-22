@@ -1,0 +1,10 @@
+Aircraft: F-HPJE type: Airbus A380 has 4 engines
+engine 1: 440 hours
+engine 2: 680 hours
+engine 3: 230 hours
+engine 4: 1050 hours
+Maintenance schedule for F-HPJE
+engine 1: maintenance due in 310 hours
+engine 2: maintenance due in 70 hours
+engine 3: maintenance due in 520 hours
+engine 4: maintenance due now!!
