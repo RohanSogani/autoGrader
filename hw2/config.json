@@ -1,0 +1,124 @@
+{
+  "due-time-stamp": "1582012800",
+  "dir-root": "/home/qadwu/Work/teach/hw2",
+  "dir-submissions": "submissions",
+  "dir-work": "work/p2",
+  "tarball": "hw2p2.tar",
+  "scripts": [
+    {
+      "file": "scripts/p2-uncompress.sh",
+      "deduct": 5,
+      "comment": "incorrect tarball (broken or has missing files)"
+    },
+    {
+      "file": "scripts/p2-compile.sh",
+      "deduct": 50,
+      "comment": "required program does not compile"
+    },
+    {
+      "file": "scripts/p2-compile-testing.sh",
+      "deduct": 20,
+      "comment": "additional testing programs do not compile compile"
+    },
+    {
+      "file": "scripts/p2-warning.sh",
+      "deduct": 5,
+      "comment": "program generates warnings"
+    },
+    {
+      "file": "scripts/p2-test1.sh",
+      "deduct": 20,
+      "comment": "test1 incompatible",
+      "apply": true
+    },
+    {
+      "file": "scripts/p2-test2.sh",
+      "deduct": 20,
+      "comment": "test2 incompatible",
+      "apply": true
+    },
+    {
+      "file": "scripts/p2-test3.sh",
+      "deduct": 20,
+      "comment": "test3 incompatible",
+      "apply": true
+    },
+    {
+      "file": "scripts/p2-test4.sh",
+      "deduct": 10,
+      "comment": "hidden case 1 incompatible",
+      "apply": true
+    },
+    {
+      "file": "scripts/p2-test5.sh",
+      "deduct": 10,
+      "comment": "hidden case 2 incompatible",
+      "apply": true
+    },
+    {
+      "file": "scripts/p2-test6.sh",
+      "deduct": 10,
+      "comment": "hidden case 3 incompatible",
+      "apply": true
+    },
+    {
+      "file": "scripts/p2-unit1.sh",
+      "deduct": 5,
+      "comment": "do not throw exception correctly",
+      "apply": true
+    },
+    {
+      "file": "scripts/p2-unit2.sh",
+      "deduct": 5,
+      "comment": "maxLoad is not correcly implemented",
+      "apply": true
+    },
+    {
+      "file": "scripts/p2-unit3.sh",
+      "deduct": 5,
+      "comment": "addContainer is not correcly implemented",
+      "apply": true
+    },
+    {
+      "file": "scripts/p2-unit4.sh",
+      "deduct": 5,
+      "comment": "currentLoad is not correcly implemented",
+      "apply": true
+    },
+    {
+      "file": "scripts/p2-unit5.sh",
+      "deduct": 5,
+      "comment": "currentLoad is not correcly implemented",
+      "apply": true
+    },
+    {
+      "file": "scripts/p2-unit6.sh",
+      "deduct": 2,
+      "comment": "Airline is not robust",
+      "apply": true
+    }
+  ],
+  "rubrics": [
+    {
+      "deduct": 10,
+      "comment": "wrong return value to function"
+    },
+    {
+      "deduct": 10,
+      "comment": "used delete instead delete[] to delete an array"
+    },
+    {
+      "deduct": 10,
+      "comment": "used free to deallocate memory allocated by the new operator"
+    },
+    {
+      "deduct": 10,
+      "comment": "The Airline.cpp is broken"
+    },
+    {
+      "deduct": 10,
+      "comment": "do not understand how to split header and source definition"
+    }
+  ],
+  "max-score": 100
+}
