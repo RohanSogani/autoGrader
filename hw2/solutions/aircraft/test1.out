@@ -1,0 +1,16 @@
+Aircraft: D-AIMB type: Airbus A380 has 4 engines
+engine 1: 550 hours
+engine 2: 400 hours
+engine 3: 370 hours
+engine 4: 600 hours
+Maintenance schedule for D-AIMB
+engine 1: maintenance due in 200 hours
+engine 2: maintenance due in 350 hours
+engine 3: maintenance due in 380 hours
+engine 4: maintenance due in 150 hours
+Aircraft: N470WN type: Boeing B737 has 2 engines
+engine 1: 410 hours
+engine 2: 350 hours
+Maintenance schedule for N470WN
+engine 1: maintenance due in 90 hours
+engine 2: maintenance due in 150 hours

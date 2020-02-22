@@ -1,0 +1,26 @@
+Airplane 1 maximum load 10
+Airplane 2 maximum load 10
+Airplane 3 maximum load 10
+Airplane 4 maximum load 10
+Airplane 5 maximum load 32
+Airplane 6 maximum load 32
+Airplane 7 maximum load 40
+Trying to assign shipment of 25 containers
+25 containers added to airplane 5
+Trying to assign shipment of 12 containers
+12 containers added to airplane 6
+Trying to assign shipment of 17 containers
+17 containers added to airplane 6
+Trying to assign shipment of 3 containers
+3 containers added to airplane 1
+Trying to assign shipment of 18 containers
+18 containers added to airplane 7
+Trying to assign shipment of 5 containers
+5 containers added to airplane 1
+Trying to assign shipment of 20 containers
+20 containers added to airplane 7
+Summary:
+airplane 1 8/10
+airplane 5 25/32
+airplane 6 29/32
+airplane 7 38/40

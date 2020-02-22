@@ -1,0 +1,8 @@
+Aircraft: D-AIMB type: Airbus A380 has 4 engines
+engine 1: 100 hours
+engine 2: 600 hours
+engine 3: 500 hours
+engine 4: 200 hours
+Aircraft: N772SW type: Boeing B737 has 2 engines
+engine 1: 7700 hours
+engine 2: 300 hours

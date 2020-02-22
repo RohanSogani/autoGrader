@@ -1,0 +1,20 @@
+Aircraft: G-XLEK type: Airbus A380 has 4 engines
+engine 1: 110 hours
+engine 2: 140 hours
+engine 3: 700 hours
+engine 4: 210 hours
+Maintenance schedule for G-XLEK
+engine 1: maintenance due in 640 hours
+engine 2: maintenance due in 610 hours
+engine 3: maintenance due in 50 hours
+engine 4: maintenance due in 540 hours
+Aircraft: 9V-SKR type: Airbus A380 has 4 engines
+engine 1: 740 hours
+engine 2: 200 hours
+engine 3: 80 hours
+engine 4: 330 hours
+Maintenance schedule for 9V-SKR
+engine 1: maintenance due in 10 hours
+engine 2: maintenance due in 550 hours
+engine 3: maintenance due in 670 hours
+engine 4: maintenance due in 420 hours
